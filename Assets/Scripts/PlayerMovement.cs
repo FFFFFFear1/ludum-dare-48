@@ -33,7 +33,8 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             animator.SetBool("isWalking", false);
-            rb.Sleep();;
+            if(canJump)
+                rb.Sleep();;
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
