@@ -3,30 +3,37 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Animator animator;
+    
+    
     public float speed = 10f;
     public float jumpForce = 50f;
 
     private Rigidbody2D rb;
-    private bool canJump;
+    public bool canJump;
     
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
         if (Input.GetKey(KeyCode.A))
         {
-            // FlipPLayer(false);
-            // transform.Translate(Vector2.left * speed * Time.deltaTime);
+            animator.SetBool("isWalking", canJump);
             rb.velocity += Vector2.left * speed * Time.deltaTime;
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            // FlipPLayer(true);
-            // transform.Translate(Vector2.right * speed * Time.deltaTime);
+            animator.SetBool("isWalking", canJump);
             rb.velocity += Vector2.right * speed * Time.deltaTime;
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+            rb.Sleep();;
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
@@ -39,17 +46,5 @@ public class PlayerMovement : MonoBehaviour
     public void FlipPLayer(bool isFlip)
     {;
         transform.GetComponent<SpriteRenderer>().flipX = !isFlip;
-    }
-    
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if(other.gameObject.CompareTag("Ground"))
-            canJump = true;
-    }
-
-    private void OnCollisionExit2D(Collision2D other)
-    {
-        if(other.gameObject.CompareTag("Ground"))
-            canJump = false;
     }
 }
