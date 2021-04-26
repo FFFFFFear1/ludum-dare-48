@@ -8,9 +8,10 @@ public class PlayerMovement : MonoBehaviour
     
     public float speed = 10f;
     public float jumpForce = 50f;
-
-    private Rigidbody2D rb;
     public bool canJump;
+    public GrappRope grappRope;
+    
+    private Rigidbody2D rb;
     
     void Start()
     {
@@ -34,12 +35,17 @@ public class PlayerMovement : MonoBehaviour
         {
             animator.SetBool("isWalking", false);
             if(canJump)
-                rb.Sleep();;
+                rb.Sleep();
+            else
+            {
+                Debug.Log(canJump);
+                rb.velocity += Vector2.down * 150 * Time.deltaTime;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(canJump)
+            if(grappRope.isGrappling)
                 rb.AddForce(Vector2.up * jumpForce * Time.deltaTime, ForceMode2D.Impulse);
         }
     }

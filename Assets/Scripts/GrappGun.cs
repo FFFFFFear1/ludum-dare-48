@@ -132,7 +132,7 @@ public class GrappGun : MonoBehaviour
             RaycastHit2D[] hits = Physics2D.RaycastAll(firePoint.position, Mouse_FirePoint_DistanceVector.normalized);
             if(hits.Length == 0) return;
             // Debug.Log(VAR);
-            Debug.Log(hits[1].transform.gameObject.layer);
+            // Debug.Log(hits[1].transform.gameObject.layer);
             if ((hits[1].transform.gameObject.layer == grappableLayerNumber || grappleToAll) &&
                 ((Vector2.Distance(hits[1].point, firePoint.position) <= maxDistance) || !hasMaxDistance))
             {
@@ -173,7 +173,6 @@ public class GrappGun : MonoBehaviour
             }
             if (Launch_Type == LaunchType.Physics_Launch)
             {
-                Debug.Log(grapplePoint);
                 m_springJoint2D.connectedAnchor = grapplePoint;
                 m_springJoint2D.distance = 0;
                 m_springJoint2D.frequency = launchSpeed;
