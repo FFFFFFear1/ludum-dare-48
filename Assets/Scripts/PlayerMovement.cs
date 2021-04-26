@@ -18,13 +18,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            FlipPLayer(false);
+            // FlipPLayer(false);
             // transform.Translate(Vector2.left * speed * Time.deltaTime);
             rb.velocity += Vector2.left * speed * Time.deltaTime;
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            FlipPLayer(true);
+            // FlipPLayer(true);
             // transform.Translate(Vector2.right * speed * Time.deltaTime);
             rb.velocity += Vector2.right * speed * Time.deltaTime;
         }

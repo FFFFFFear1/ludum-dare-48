@@ -12,7 +12,7 @@ public class GrappGun : MonoBehaviour
     public Camera m_camera;
 
     [Header("Transform Refrences:")]
-    public Transform gunHolder;
+    public Transform arm;
     public Transform gunPivot;
     public Transform firePoint;
 
@@ -35,6 +35,8 @@ public class GrappGun : MonoBehaviour
     [SerializeField] private float targetFrequency = 3;
 
 
+    public PlayerMovement player;
+    
     private enum LaunchType
     {
         Transform_Launch,
@@ -79,10 +81,6 @@ public class GrappGun : MonoBehaviour
 
             if (launchToPoint && grappleRope.isGrappling)
             {
-                if (Launch_Type == LaunchType.Transform_Launch)
-                {
-                    gunHolder.position = Vector3.Lerp(gunHolder.position, grapplePoint, Time.deltaTime * launchSpeed);
-                }
             }
 
         }
@@ -102,15 +100,29 @@ public class GrappGun : MonoBehaviour
     {
         Vector3 distanceVector = lookPoint - new Vector3(gunPivot.position.x, gunPivot.position.y + 2.3f);
 
-        float angle = Mathf.Atan2(distanceVector.y, distanceVector.x) * Mathf.Rad2Deg;
-        if (rotateOverTime && allowRotationOverTime)
-        {
-            Quaternion startRotation = gunPivot.rotation;
-            gunPivot.rotation = Quaternion.Lerp(startRotation, Quaternion.AngleAxis(angle, Vector3.forward), Time.deltaTime * rotationSpeed);
-        }
-        else
-            gunPivot.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            float angle = Mathf.Atan2(distanceVector.y, distanceVector.x) * Mathf.Rad2Deg;
+            if (angle > 90 || angle < -90)
+            {
+                player.FlipPLayer(false);
+                arm.GetComponent<SpriteRenderer>().flipY = true;
+            }
+            else
+            {
+                player.FlipPLayer(true);
+                arm.GetComponent<SpriteRenderer>().flipY = false;
+            }
 
+            if (angle > -55 || angle < -125)
+            {
+                if (rotateOverTime && allowRotationOverTime)
+                {
+                    Quaternion startRotation = gunPivot.rotation;
+                    gunPivot.rotation = Quaternion.Lerp(startRotation, Quaternion.AngleAxis(angle, Vector3.forward),
+                        Time.deltaTime * rotationSpeed);
+                }
+                else
+                    gunPivot.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            }
     }
 
     void SetGrapplePoint()
@@ -161,6 +173,7 @@ public class GrappGun : MonoBehaviour
             }
             if (Launch_Type == LaunchType.Physics_Launch)
             {
+                Debug.Log(grapplePoint);
                 m_springJoint2D.connectedAnchor = grapplePoint;
                 m_springJoint2D.distance = 0;
                 m_springJoint2D.frequency = launchSpeed;
