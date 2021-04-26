@@ -18,11 +18,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
+            FlipPLayer(false);
             // transform.Translate(Vector2.left * speed * Time.deltaTime);
             rb.velocity += Vector2.left * speed * Time.deltaTime;
         }
         else if (Input.GetKey(KeyCode.D))
         {
+            FlipPLayer(true);
             // transform.Translate(Vector2.right * speed * Time.deltaTime);
             rb.velocity += Vector2.right * speed * Time.deltaTime;
         }
@@ -33,7 +35,12 @@ public class PlayerMovement : MonoBehaviour
                 rb.AddForce(Vector2.up * jumpForce * Time.deltaTime, ForceMode2D.Impulse);
         }
     }
-
+    
+    public void FlipPLayer(bool isFlip)
+    {;
+        transform.GetComponent<SpriteRenderer>().flipX = !isFlip;
+    }
+    
     private void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Ground"))

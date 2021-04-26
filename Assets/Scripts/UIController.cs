@@ -36,6 +36,12 @@ public class UIController : MonoBehaviour
 
     public void RestartGame()
     {
+        HP_View[0].gameObject.SetActive(true);
+        HP_View[1].gameObject.SetActive(true);
+        HP_View[2].gameObject.SetActive(true);
+        player.GetComponent<PlayerController>().HP = 3;
+        
+        
         menu.SetActive(true);
         gamePlay.SetActive(false);
         player.SetActive(false);

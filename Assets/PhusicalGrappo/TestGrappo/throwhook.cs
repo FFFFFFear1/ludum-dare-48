@@ -62,8 +62,8 @@ public class throwhook : MonoBehaviour {
 		}
 		if (Input.GetMouseButtonUp(0))
 		{
-			// Destroy(curHook);
-			// ropeActive = false;
+			Destroy(curHook);
+			ropeActive = false;
 		}
 		if (Input.GetKey(KeyCode.W))
 		{

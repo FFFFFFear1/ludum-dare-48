@@ -10230,13 +10230,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3769200605357819339, guid: 9483de9eca57b44478b362c33ab8c95f, type: 3}
-      propertyPath: rat
+    - target: {fileID: 3769200605502071006, guid: 9483de9eca57b44478b362c33ab8c95f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769200605551723200, guid: 9483de9eca57b44478b362c33ab8c95f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769200605551723201, guid: 9483de9eca57b44478b362c33ab8c95f, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769200605938585743, guid: 9483de9eca57b44478b362c33ab8c95f, type: 3}
+      propertyPath: m_Icon
       value: 
-      objectReference: {fileID: 999039165641238204, guid: 94308b867d25e014f90ef57dc018e643, type: 3}
-    - target: {fileID: 3769200605357819339, guid: 9483de9eca57b44478b362c33ab8c95f, type: 3}
-      propertyPath: SpawnTimerRats
-      value: 20
+      objectReference: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 3769200605938585743, guid: 9483de9eca57b44478b362c33ab8c95f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3769200606187338562, guid: 9483de9eca57b44478b362c33ab8c95f, type: 3}
       propertyPath: m_RootOrder
@@ -10248,7 +10260,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3769200606187338562, guid: 9483de9eca57b44478b362c33ab8c95f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.56
+      value: 13.35
       objectReference: {fileID: 0}
     - target: {fileID: 3769200606187338562, guid: 9483de9eca57b44478b362c33ab8c95f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10285,6 +10297,10 @@ PrefabInstance:
     - target: {fileID: 3769200606187338591, guid: 9483de9eca57b44478b362c33ab8c95f, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769200606847592200, guid: 9483de9eca57b44478b362c33ab8c95f, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 3769200606847592202, guid: 9483de9eca57b44478b362c33ab8c95f, type: 3}
       propertyPath: m_camera

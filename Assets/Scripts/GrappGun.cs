@@ -100,7 +100,7 @@ public class GrappGun : MonoBehaviour
 
     void RotateGun(Vector3 lookPoint, bool allowRotationOverTime)
     {
-        Vector3 distanceVector = lookPoint - gunPivot.position;
+        Vector3 distanceVector = lookPoint - new Vector3(gunPivot.position.x, gunPivot.position.y + 2.3f);
 
         float angle = Mathf.Atan2(distanceVector.y, distanceVector.x) * Mathf.Rad2Deg;
         if (rotateOverTime && allowRotationOverTime)
@@ -119,7 +119,8 @@ public class GrappGun : MonoBehaviour
         {
             RaycastHit2D[] hits = Physics2D.RaycastAll(firePoint.position, Mouse_FirePoint_DistanceVector.normalized);
             if(hits.Length == 0) return;
-            Debug.Log(hits[1].transform.gameObject.name);
+            // Debug.Log(VAR);
+            Debug.Log(hits[1].transform.gameObject.layer);
             if ((hits[1].transform.gameObject.layer == grappableLayerNumber || grappleToAll) &&
                 ((Vector2.Distance(hits[1].point, firePoint.position) <= maxDistance) || !hasMaxDistance))
             {
