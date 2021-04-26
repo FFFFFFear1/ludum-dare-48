@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && uberJump)
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             uberJump = false;
             transform.GetComponent<Rigidbody2D>().AddForce(Vector2.up * ultyForce);
