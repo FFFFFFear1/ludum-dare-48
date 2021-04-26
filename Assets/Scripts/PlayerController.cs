@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q) && uberJump)
         {
+            uberJump = false;
             transform.GetComponent<Rigidbody2D>().AddForce(Vector2.up * ultyForce);
             UIController.instance.UseUlty();
         }

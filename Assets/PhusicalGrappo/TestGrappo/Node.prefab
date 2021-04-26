@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 212000012245077370}
   - component: {fileID: 50000014153168478}
   - component: {fileID: 58000014293007010}
-  - component: {fileID: 1965490073278372659}
+  - component: {fileID: 4258297497332345515}
   m_Layer: 8
   m_Name: Node
   m_TagString: Untagged
@@ -122,7 +122,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.14517032
---- !u!231 &1965490073278372659
+--- !u!231 &4258297497332345515
 SpringJoint2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,7 +131,7 @@ SpringJoint2D:
   m_GameObject: {fileID: 1000014215547198}
   m_Enabled: 1
   serializedVersion: 4
-  m_EnableCollision: 1
+  m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
@@ -140,5 +140,5 @@ SpringJoint2D:
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 0
   m_Distance: 0.005
-  m_DampingRatio: 0
-  m_Frequency: 2
+  m_DampingRatio: 1
+  m_Frequency: 1

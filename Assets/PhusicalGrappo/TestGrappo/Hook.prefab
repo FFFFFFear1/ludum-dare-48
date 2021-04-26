@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 58000011381285992}
   - component: {fileID: 114000010978699574}
   - component: {fileID: 120000014128933588}
-  - component: {fileID: -5581036808503024308}
+  - component: {fileID: 2868977980814040702}
   m_Layer: 8
   m_Name: Hook
   m_TagString: Untagged
@@ -251,7 +251,7 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!231 &-5581036808503024308
+--- !u!231 &2868977980814040702
 SpringJoint2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -268,6 +268,6 @@ SpringJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 0
-  m_Distance: 0.005
-  m_DampingRatio: 0
-  m_Frequency: 2
+  m_Distance: 0.042426407
+  m_DampingRatio: 1
+  m_Frequency: 1

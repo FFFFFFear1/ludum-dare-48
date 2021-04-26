@@ -19,8 +19,8 @@ public class throwhook : MonoBehaviour {
 	[SerializeField] private float maxDistance = 40;
 
 
-	private float timer_1 = 0.3f;
-	private float timer_2 = 0.3f;
+	private float timer_1 = 0.1f;
+	private float timer_2 = 0.1f;
 
 	// Use this for initialization
 	void Start () {
@@ -52,7 +52,7 @@ public class throwhook : MonoBehaviour {
 					Debug.Log(pos);
 					Vector2 destiny = pos;
 
-					curHook = (GameObject) Instantiate(hook, transform.position, Quaternion.identity);
+					curHook = Instantiate(hook, transform.position, Quaternion.identity);
 
 					curHook.GetComponent<RopeScript>().destiny = destiny;
 
@@ -62,8 +62,8 @@ public class throwhook : MonoBehaviour {
 		}
 		if (Input.GetMouseButtonUp(0))
 		{
-			Destroy(curHook);
-			ropeActive = false;
+			// Destroy(curHook);
+			// ropeActive = false;
 		}
 		if (Input.GetKey(KeyCode.W))
 		{
@@ -71,7 +71,7 @@ public class throwhook : MonoBehaviour {
 			{
 				curHook.GetComponent<RopeScript>().DeleteNode();
 
-				timer_1 = .3f;
+				timer_1 = .1f;
 			}
 		}
 		if (Input.GetKey(KeyCode.S))
@@ -80,7 +80,7 @@ public class throwhook : MonoBehaviour {
 			{
 				curHook.GetComponent<RopeScript>().AddNode();
 
-				timer_2 = .3f;
+				timer_2 = .1f;
 			}
 		}
 	}

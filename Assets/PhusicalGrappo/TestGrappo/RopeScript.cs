@@ -28,24 +28,17 @@ public class RopeScript : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		lastNode = transform.gameObject;
 		Nodes.Add (transform.gameObject);
-
-
 	}
 	
 	void Update () {
-	
-
+		
 		transform.position = Vector2.MoveTowards (transform.position,destiny,speed);
-
 		if ((Vector2)transform.position != destiny) {
-
 			if (Vector2.Distance (player.transform.position, lastNode.transform.position) > distance/2)
 			{
 				CreateNode();
 			}
-			
 		} else if (done == false) {
-
 			done = true;
 			while(Vector2.Distance (player.transform.position, lastNode.transform.position) > distance/2)
 			{
@@ -60,52 +53,56 @@ public class RopeScript : MonoBehaviour {
 	void RenderLine()
 	{
 		lr.SetVertexCount (vertexCount);
-	
 		int i;
 		for (i = 0; i < Nodes.Count; i++) {
 			lr.SetPosition (i, Nodes [i].transform.position);
 		}
-
 		lr.SetPosition (i, player.transform.position);
-
 	}
 
 
 	public void CreateNode()
 	{
 		Vector2 pos2Create = player.transform.position - lastNode.transform.position;
-		pos2Create.Normalize ();
+		pos2Create.Normalize();
 		pos2Create *= distance;
-		pos2Create += (Vector2)lastNode.transform.position;
+		pos2Create += (Vector2) lastNode.transform.position;
 
-		GameObject go = Instantiate (nodePrefab, pos2Create, Quaternion.identity);
+		GameObject go = Instantiate(nodePrefab, pos2Create, Quaternion.identity);
 
-		go.transform.SetParent (transform);
-		lastNode.GetComponent<SpringJoint2D>().connectedBody = go.GetComponent<Rigidbody2D> ();
+		go.transform.SetParent(transform);
+		lastNode.GetComponent<SpringJoint2D>().connectedBody = go.GetComponent<Rigidbody2D>();
 		lastNode.GetComponent<SpringJoint2D>().autoConfigureDistance = false;
 		lastNode.GetComponent<SpringJoint2D>().distance = 0.005f;
 		lastNode.GetComponent<SpringJoint2D>().frequency = 2.5f;
+		lastNode.GetComponent<SpringJoint2D>().dampingRatio = 40;
 		lastNode = go;
 
-		Nodes.Add (lastNode);
+		Nodes.Add(lastNode);
 
 		vertexCount++;
-
 	}
-	
+
 	public void AddNode()
 	{
-		Vector2 pos2Create = player.transform.position + lastNode.transform.position;
+		Vector2 pos2Create = player.transform.position - lastNode.transform.position;
 		pos2Create.Normalize ();
 		pos2Create *= distance;
 		pos2Create += (Vector2)lastNode.transform.position;
 
-		GameObject go = (GameObject)	Instantiate (nodePrefab, pos2Create, Quaternion.identity);
+		Debug.Log(pos2Create);
+		GameObject go = Instantiate (nodePrefab, pos2Create, Quaternion.identity);
 
 		go.transform.SetParent (transform);
 		lastNode.GetComponent<SpringJoint2D> ().connectedBody = go.GetComponent<Rigidbody2D> ();
+		lastNode.GetComponent<SpringJoint2D>().autoConfigureDistance = false;
+		lastNode.GetComponent<SpringJoint2D>().distance = 0.005f;
+		lastNode.GetComponent<SpringJoint2D>().frequency = 2.5f;
+		lastNode.GetComponent<SpringJoint2D>().dampingRatio = 40;
 		lastNode = go;
 
+		lastNode.GetComponent<SpringJoint2D>().connectedBody = player.GetComponent<Rigidbody2D>();
+		
 		Nodes.Add (lastNode);
 
 		vertexCount++;
