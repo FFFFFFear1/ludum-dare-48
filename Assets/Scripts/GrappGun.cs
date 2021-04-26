@@ -122,6 +122,7 @@ public class GrappGun : MonoBehaviour
             if ((hits[1].transform.gameObject.layer == grappableLayerNumber || grappleToAll) &&
                 ((Vector2.Distance(hits[1].point, firePoint.position) <= maxDistance) || !hasMaxDistance))
             {
+                SoundManager.instance.UseGrappo();
                 grapplePoint = hits[1].point;
                 DistanceVector = grapplePoint - (Vector2) gunPivot.position;
                 grappleRope.enabled = true;
