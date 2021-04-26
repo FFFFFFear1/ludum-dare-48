@@ -117,11 +117,13 @@ public class GrappGun : MonoBehaviour
     {
         if (Physics2D.Raycast(firePoint.position, Mouse_FirePoint_DistanceVector.normalized))
         {
-            RaycastHit2D _hit = Physics2D.Raycast(firePoint.position, Mouse_FirePoint_DistanceVector.normalized);
-            if ((_hit.transform.gameObject.layer == grappableLayerNumber || grappleToAll) && ((Vector2.Distance(_hit.point, firePoint.position) <= maxDistance) || !hasMaxDistance))
+            
+            RaycastHit2D[] hits = Physics2D.RaycastAll(firePoint.position, Mouse_FirePoint_DistanceVector.normalized);
+            if ((hits[1].transform.gameObject.layer == grappableLayerNumber || grappleToAll) &&
+                ((Vector2.Distance(hits[1].point, firePoint.position) <= maxDistance) || !hasMaxDistance))
             {
-                grapplePoint = _hit.point;
-                DistanceVector = grapplePoint - (Vector2)gunPivot.position;
+                grapplePoint = hits[1].point;
+                DistanceVector = grapplePoint - (Vector2) gunPivot.position;
                 grappleRope.enabled = true;
             }
         }
