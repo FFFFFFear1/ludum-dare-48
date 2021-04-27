@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    public BoxCollider2D bc;
     public GameObject menu;
     public GameObject gamePlay;
     
@@ -23,6 +24,7 @@ public class UIController : MonoBehaviour
     {
         player.SetActive(false);
         instance = this;
+        
     }
 
     public void StartGame()
@@ -64,4 +66,8 @@ public class UIController : MonoBehaviour
         ultyView.gameObject.SetActive(!ultyView.gameObject.activeSelf);
     }
 
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        SceneManager.LoadScene("End");
+    }
 }
